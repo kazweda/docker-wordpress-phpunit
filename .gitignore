@@ -1,1 +1,2 @@
-/html/
+/plugins/*.php
+/plugins/akismet/
