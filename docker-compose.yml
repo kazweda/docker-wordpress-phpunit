@@ -1,31 +1,31 @@
 version: '3.3'
 
 services:
-   db:
-     image: mysql:5.7
-     env_file: .env
-     volumes:
-       - db_data:/var/lib/mysql
-     restart: always
+  db:
+    image: mysql:5.7
+    env_file: .env
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
        
-   wordpress:
-     build:
-        context: .
-        dockerfile: Dockerfile
-     depends_on:
-       - db
-     ports:
-       - "8000:80"
-     environment:
-       WORDPRESS_DB_HOST: "db:3306"
-     env_file: .env
-     restart: always
-     volumes:
-       - ./plugins:/var/www/html/wp-content/plugins
-       - for-testing:/tmp
+  wordpress:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - "8000:80"
+    environment:
+      WORDPRESS_DB_HOST: "db:3306"
+    env_file: .env
+    restart: always
+    volumes:
+      - ./plugins:/var/www/html/wp-content/plugins
+      - for-testing:/tmp
 
 volumes:
-    db_data:
-       driver: local
-    for-testing:
-       driver: local
+  db_data:
+    driver: local
+  for-testing:
+    driver: local
