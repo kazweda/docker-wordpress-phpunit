@@ -14,7 +14,7 @@ class SampleTest extends WP_UnitTestCase {
 	 * A single example test.
 	 */
 	public function test_sample() {
-		// Replace this with some actual testing code.
-		$this->assertTrue( true );
+    $myPlug = new My_Plugin();
+		$this->assertEquals( 'hello world!!', $myPlug->make_string() );
 	}
 }
